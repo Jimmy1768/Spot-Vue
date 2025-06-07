@@ -1,6 +1,11 @@
 <template>
   <!-- Main section with centered grid and logo -->
   <div class="main">
+    <div v-if="isLoading" class="loading-screen">
+      <img src="/assets/loading.gif" alt="Loading..." class="loading-image" />
+      <p>Loading images...</p>
+    </div>
+
     <div class="grid-with-logo">
       <img src="/assets/logo.png" alt="SPOT Logo" class="logo" />
       <div class="grid">
@@ -49,10 +54,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onMounted , computed } from 'vue'
 import GridItem from '@/components/GridItem.vue'
 import { translations } from '@/i18n/translations.js'
 import { currentLang } from '@/stores/lang' // ✅ this is the shared global ref
+import { imagePaths } from '@/utils/imageResources'
 
 const showLang = ref(false)
 
@@ -67,6 +73,25 @@ const t = computed(() => translations[currentLang.value])
 const setLanguage = (lang) => {
   currentLang.value = lang
 }
+
+const isLoading = ref(true)
+
+function preloadImages(paths) {
+  const promises = paths.map(src => {
+    return new Promise(resolve => {
+      const img = new Image()
+      img.src = src
+      img.onload = resolve
+      img.onerror = resolve
+    })
+  })
+  return Promise.all(promises)
+}
+
+onMounted(async () => {
+  await preloadImages(imagePaths)
+  isLoading.value = false
+})
 </script>
 
 <style scoped>
@@ -75,6 +100,17 @@ const setLanguage = (lang) => {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+.loading-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 16px;
 }
 .grid-with-logo {
   position: relative;
@@ -109,5 +145,4 @@ const setLanguage = (lang) => {
   justify-content: center;
   margin-top: 16px;  
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="rentals-page">
     <h1 class="title">{{ t.title }}</h1>
-    <img src="/assets/equipmentdetails.avif" alt="Equipment Overview" class="header-image" />
+    <img src="/assets/equipmentdetails.png" alt="Equipment Overview" class="header-image" />
     <p class="intro">{{ t.intro }}</p>
 
     <div class="frames">

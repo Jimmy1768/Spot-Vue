@@ -17,8 +17,8 @@ import LessonBooking from '../views/booking/Lessons.vue'
 import LessonsPage from '../views/lessons/LessonsPage.vue'
 import Surfing from '../views/lessons/Surfing.vue'
 import Skimboard from '../views/lessons/Skimboard.vue'
-import SUP from '../views/lessons/SUP.vue'
-import SUPSKATE from '../views/lessons/SUPSKATE.vue'
+import SUP from '../views/lessons/Sup.vue'
+import SUPSKATE from '../views/lessons/Supskate.vue'
 
 // Admin pages
 import Login from '../views/admin/Login.vue'
