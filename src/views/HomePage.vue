@@ -49,8 +49,8 @@
     </div>
   </div>
 
-  <!-- Carousel placeholder -->
-  <div class="carousel">Carousel Placeholder</div>    
+  <!-- Events Carousel -->
+  <EventsCarousel :posts="eventPosts" />
 </template>
 
 <script setup>
@@ -59,6 +59,7 @@ import GridItem from '@/components/GridItem.vue'
 import { translations } from '@/i18n/translations.js'
 import { currentLang } from '@/stores/lang' // ✅ this is the shared global ref
 import { imagePaths } from '@/utils/imageResources'
+import EventsCarousel from '@/components/carousels/EventsCarousel.vue'
 
 const showLang = ref(false)
 
@@ -92,6 +93,27 @@ onMounted(async () => {
   await preloadImages(imagePaths)
   isLoading.value = false
 })
+
+const eventPosts = [
+  {
+    title: 'Catering 特色外燴活動',
+    image: '/assets/events1.png',
+    summary: '從海邊早午餐到特製晚宴，我們提供客製化的外燴服務...',
+    link: '/events/catering'
+  },
+  {
+    title: '場地租借活動空間',
+    image: '/assets/events2.png',
+    summary: '提供適合團體活動與聚會的海邊空間租借服務...',
+    link: '/events/rentals'
+  },
+  {
+    title: 'Depth Run 沉浸式夜間路跑',
+    image: '/assets/events3.png',
+    summary: '體驗夜間跑步與藝術結合的深度路跑活動...',
+    link: '/events/depthrun'
+  }
+]
 </script>
 
 <style scoped>

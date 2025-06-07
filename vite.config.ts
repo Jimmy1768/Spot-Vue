@@ -15,9 +15,9 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/login': 'http://192.168.0.119:3000',
-      '/logout': 'http://192.168.0.119:3000',
-      '/current_user': 'http://192.168.0.119:3000',
+      '/login': 'http://localhost:3100',
+      '/logout': 'http://localhost:3100',
+      '/current_user': 'http://localhost:3100',
     }
   }
 })

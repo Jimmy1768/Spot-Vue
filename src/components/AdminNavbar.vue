@@ -1,3 +1,25 @@
+<template>
+  <nav class="admin-navbar">
+    <!-- Navigation Links -->
+    <div class="navbar-links">
+      <RouterLink to="/admin/dashboard" class="nav-link">Dashboard</RouterLink>
+
+      <!-- Admin-only links -->
+      <template v-if="userRole === 'admin'">
+        <RouterLink to="/admin/bookings" class="nav-link">Bookings</RouterLink>
+        <RouterLink to="/admin/email-campaigns" class="nav-link">Emails</RouterLink>
+        <RouterLink to="/admin/reviews" class="nav-link">Reviews</RouterLink>
+        <RouterLink to="/admin/gallery" class="nav-link">Gallery</RouterLink>
+        <RouterLink to="/admin/events" class="nav-link">Events</RouterLink>
+        <RouterLink to="/admin/analytics" class="nav-link">Analytics</RouterLink>
+      </template>
+
+      <!-- Shared with staff -->
+      <RouterLink to="/admin/blog" class="nav-link">Blog</RouterLink>
+    </div>
+  </nav>
+</template>
+
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -20,25 +42,58 @@ const handleLogout = async () => {
 }
 </script>
 
-<template>
-  <nav class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
-    <div class="flex space-x-6">
-      <RouterLink to="/admin/dashboard" class="font-semibold hover:text-blue-600">Dashboard</RouterLink>
+<style scoped>
+.admin-navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
 
-      <!-- Admin-only links -->
-      <template v-if="userRole === 'admin'">
-        <RouterLink to="/admin/bookings" class="font-semibold hover:text-blue-600">Bookings</RouterLink>
-        <RouterLink to="/admin/email-campaigns" class="font-semibold hover:text-blue-600">Emails</RouterLink>
-        <RouterLink to="/admin/reviews" class="font-semibold hover:text-blue-600">Reviews</RouterLink>
-        <RouterLink to="/admin/gallery" class="font-semibold hover:text-blue-600">Gallery</RouterLink>
-        <RouterLink to="/admin/events" class="font-semibold hover:text-blue-600">Events</RouterLink>
-        <RouterLink to="/admin/analytics" class="font-semibold hover:text-blue-600">Analytics</RouterLink>
-      </template>
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
 
-      <!-- Shared with staff -->
-      <RouterLink to="/admin/blog" class="font-semibold hover:text-blue-600">Blog</RouterLink>
-    </div>
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+}
 
-    <button @click="handleLogout" class="text-sm font-medium text-red-600 hover:underline">Logout</button>
-  </nav>
-</template>
+.logout-button {
+  background-color: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.logout-button:hover {
+  background-color: #dc2626;
+}
+
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav-link {
+  background-color: #f3f4f6;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #111827;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: #e5e7eb;
+}
+</style>
+

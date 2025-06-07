@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
+import AdminLayout from '@/components/layouts/AdminLayout.vue'
 
 // Public pages
 import HomePage from '../views/HomePage.vue'
@@ -19,6 +20,8 @@ import Surfing from '../views/lessons/Surfing.vue'
 import Skimboard from '../views/lessons/Skimboard.vue'
 import SUP from '../views/lessons/Sup.vue'
 import SUPSKATE from '../views/lessons/Supskate.vue'
+
+import SurfWall from '@/views/SurfWall.vue'
 
 // Admin pages
 import Login from '../views/admin/Login.vue'
@@ -52,22 +55,32 @@ const routes = [
       { path: 'lessons/surfing', component: Surfing },
       { path: 'lessons/skimboard', component: Skimboard },
       { path: 'lessons/sup', component: SUP },
-      { path: 'lessons/supskate', component: SUPSKATE }
+      { path: 'lessons/supskate', component: SUPSKATE },
+
+      { path: 'surfwall', component: SurfWall },
     ]
   },
 
-  // Admin routes (no layout)
-  { path: '/admin/login', component: Login },
-  { path: '/admin/dashboard', component: Dashboard, meta: { requiresAuth: true } },
-  { path: '/admin/email-campaigns', component: EmailCampaigns, meta: { requiresAuth: true, role: 'admin' } },
-  { path: '/admin/bookings', component: BookingManager, meta: { requiresAuth: true, role: 'admin' } },
-  { path: '/admin/analytics', component: Analytics, meta: { requiresAuth: true, role: 'admin' } },
-  { path: '/admin/reviews', component: ReviewManager, meta: { requiresAuth: true, role: 'admin' } },
-  { path: '/admin/gallery', component: GalleryManager, meta: { requiresAuth: true, role: 'admin' } },
-  { path: '/admin/events', component: EventManager, meta: { requiresAuth: true, role: 'admin' } },
-
-  // Shared (Admin + Staff)
-  { path: '/admin/blog', component: BlogManager, meta: { requiresAuth: true } }
+  // Admin layout and admin-only tools
+  {
+    path: '/admin',
+    component: AdminLayout,
+    meta: { requiresAuth: true },
+    children: [
+      { path: 'dashboard', component: Dashboard },
+      { path: 'email-campaigns', component: EmailCampaigns, meta: { role: 'admin' } },
+      { path: 'bookings', component: BookingManager, meta: { role: 'admin' } },
+      { path: 'analytics', component: Analytics, meta: { role: 'admin' } },
+      { path: 'reviews', component: ReviewManager, meta: { role: 'admin' } },
+      { path: 'gallery', component: GalleryManager, meta: { role: 'admin' } },
+      { path: 'events', component: EventManager, meta: { role: 'admin' } },
+      // ✅ Staff-accessible route, outside AdminLayout layout
+      { path: '/admin/blog', component: BlogManager, meta: { requiresAuth: true } }
+    ]
+  },
+  
+  // ✅ Login route
+  { path: '/admin/login', component: Login }
 ]
 
 const router = createRouter({

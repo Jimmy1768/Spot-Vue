@@ -42,7 +42,7 @@ const t = computed(() => translations[currentLang.value].instructordetails)
 
 const instructors = [
   {
-    name: 'Tony Wang',
+    name: 'Henry Wang',
     photo: '/assets/instructor.png',
     experience: 8,
     specialty: 'Surfing, SUP, Skimboard',

@@ -1,14 +1,13 @@
+<!-- src/views/admin/Dashboard.vue -->
 <template>
   <div class="min-h-screen bg-gray-100">
-    <AdminNavbar />
+    <AdminLayout />
 
     <main class="p-6">
-      <h1 class="text-2xl font-bold mb-4">Welcome to the Admin Dashboard</h1>
-      <p class="text-gray-600">This is a placeholder. Real tools coming soon.</p>
+      <div class="bg-white rounded shadow p-6">
+        <p class="text-gray-600">No new messages.</p>
+      </div>
     </main>
   </div>
 </template>
 
-<script setup>
-import AdminNavbar from '@/components/AdminNavbar.vue'
-</script>
