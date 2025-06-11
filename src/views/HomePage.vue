@@ -1,11 +1,6 @@
 <template>
   <!-- Main section with centered grid and logo -->
   <div class="main">
-    <div v-if="isLoading" class="loading-screen">
-      <img src="/assets/loading.gif" alt="Loading..." class="loading-image" />
-      <p>Loading images...</p>
-    </div>
-
     <div class="grid-with-logo">
       <img src="/assets/logo.png" alt="SPOT Logo" class="logo" />
       <div class="grid">
@@ -75,8 +70,6 @@ const setLanguage = (lang) => {
   currentLang.value = lang
 }
 
-const isLoading = ref(true)
-
 function preloadImages(paths) {
   const promises = paths.map(src => {
     return new Promise(resolve => {
@@ -91,7 +84,6 @@ function preloadImages(paths) {
 
 onMounted(async () => {
   await preloadImages(imagePaths)
-  isLoading.value = false
 })
 
 const eventPosts = [

@@ -46,8 +46,8 @@ import { currentLang } from '@/stores/lang'
 
 import Surfing from './Surfing.vue'
 import Skimboard from './Skimboard.vue'
-import SUP from './SUP.vue'
-import SUPSKATE from './SUPSKATE.vue'
+import SUP from './Sup.vue'
+import SUPSKATE from './Supskate.vue'
 
 const route = useRoute()
 const router = useRouter()

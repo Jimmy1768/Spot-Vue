@@ -1,12 +1,17 @@
 <template>
   <div class="top-bar">
     <div class="top-bar-inner">
-      <div class="social-icons">
-        <a href="https://www.facebook.com/spottaiwan/"><i class="fab fa-facebook-square"></i></a>
-        <a href="https://www.instagram.com/spot_tw/?hl=zh-tw"><i class="fab fa-instagram-square"></i></a>
-        <a href="https://www.youtube.com/channel/UCQc9oPHnr9ZxdiH1aZKU17g"><i class="fab fa-youtube-square"></i></a>
+      <!-- Left: Social + Home -->
+      <div class="left-group">
+        <div class="social-icons">
+          <a href="https://www.facebook.com/spottaiwan/"><i class="fab fa-facebook-square"></i></a>
+          <a href="https://www.instagram.com/spot_tw/?hl=zh-tw"><i class="fab fa-instagram-square"></i></a>
+          <a href="https://www.youtube.com/channel/UCQc9oPHnr9ZxdiH1aZKU17g"><i class="fab fa-youtube-square"></i></a>
+        </div>
+        <router-link to="/" class="top-button">Home</router-link>
       </div>
 
+      <!-- Center: Surfwall -->
       <div class="surfwall-message">
         <span class="surfwall-bubble">
           {{ t.surfwallMessage }}
@@ -14,15 +19,19 @@
         </span>
       </div>
 
-      <div class="language-selector" @mouseenter="showLang = true" @mouseleave="showLang = false">
-        <div class="selected-lang">
-          <span :class="`fi ${languages[currentLang].flag}`"></span>
+      <!-- Right: Blog + Language -->
+      <div class="right-group">
+        <router-link to="/blog" class="top-button">Blog</router-link>
+        <div class="language-selector" @mouseenter="showLang = true" @mouseleave="showLang = false">
+          <div class="selected-lang">
+            <span :class="`fi ${languages[currentLang].flag}`"></span>
+          </div>
+          <ul class="lang-menu" v-show="showLang">
+            <li v-for="(lang, key) in languages" :key="key" @click="setLanguage(key)">
+              <span :class="`fi ${lang.flag}`"></span> {{ lang.label }}
+            </li>
+          </ul>
         </div>
-        <ul class="lang-menu" v-show="showLang">
-          <li v-for="(lang, key) in languages" :key="key" @click="setLanguage(key)">
-            <span :class="`fi ${lang.flag}`"></span> {{ lang.label }}
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -55,6 +64,30 @@ const showLang = ref(false)
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.left-group,
+.right-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-button {
+  background-color: #f3f3f3;
+  color: black;
+  padding: 1px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.top-button:hover {
+  
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
 }
 
 .social-icons {
