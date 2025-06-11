@@ -25,7 +25,7 @@
         <span class="feature-pill" v-for="(item, i) in t.features" :key="i">{{ item }}</span>
       </div>
 
-      <button class="booking-button" @click="showModal = true">
+      <button class="booking-button" @click="openLineBooking">
         {{ t.bookOnline }}
       </button>
     </div>
@@ -54,7 +54,8 @@
 
 
   <!-- OUTSIDE the layout, so it overlays the whole page -->
-  <BookingCalendar :visible="showModal" @close="showModal = false" />
+  <!-- <BookingCalendar :visible="showModal" @close="showModal = false" /> -->
+
 </template>
 
 <script setup>
@@ -65,6 +66,11 @@ import BookingCalendar from '@/components/booking/BookingCalendar.vue'
 
 const t = computed(() => translations[currentLang.value].hosteldetails)
 const showModal = ref(false)
+
+// Temporarily redirect to LINE while booking system is being built
+const openLineBooking = () => {
+  window.open('https://line.me/R/ti/p/@197hifeq', '_blank')
+}
 
 const images = [
   '/assets/hostel1.png',
