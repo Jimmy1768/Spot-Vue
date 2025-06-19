@@ -19,6 +19,7 @@ export const translations = {
     faq: '常見問題 / 聯絡我們',
     surfwallMessage: '🏄 夏日衝浪體驗 —',
     joinChallenge: '參加 SurfWall 挑戰！',
+    read_more: '閱讀文章',
 
     lessonsOverview: {
       surfing: {
@@ -26,7 +27,6 @@ export const translations = {
         description: '衝浪概念 / 衝浪原理 / 實際體驗',
         duration: '2.5 小時',
         pricing: [
-          'NT 1,500/人｜4 人以上',
           'NT 1,700/人｜3 人',
           'NT 2,000/人｜2 人',
           'NT 3,000/人｜1 人'
@@ -37,7 +37,6 @@ export const translations = {
         description: '立式划槳概念 / 操作原理 / 實際體驗',
         duration: '2.5 小時',
         pricing: [
-          'NT 1,500/人｜4 人以上',
           'NT 1,700/人｜3 人',
           'NT 2,000/人｜2 人',
           'NT 3,000/人｜1 人'
@@ -48,7 +47,6 @@ export const translations = {
         description: '沙板概念 / 裝備介紹 / 安全防護 / 基本玩法',
         duration: '2.5 小時',
         pricing: [
-          'NT 1,500/人｜4 人以上',
           'NT 1,700/人｜3 人',
           'NT 2,000/人｜2 人',
           'NT 3,000/人｜1 人'
@@ -368,6 +366,7 @@ export const translations = {
     faq: 'FAQ / Contact',
     surfwallMessage: '🏄 Summer Surfing Experience —',
     joinChallenge: 'Join the SurfWall challenge!',
+    read_more: 'Read Article',
 
     lessonsOverview: {
       surfing: {
@@ -375,7 +374,6 @@ export const translations = {
         description: 'Surfing concept / surfing principle / actual experience',
         duration: '2.5 hours',
         pricing: [
-          'NT 1,500/person｜4 people or more',
           'NT 1,700/person｜3 people',
           'NT 2,000/person｜2 persons',
           'NT 3,000/person｜1 person'
@@ -386,7 +384,6 @@ export const translations = {
         description: 'Stand Up Paddle Board Concept/ Principles of Stand Up Paddle Board/ Actual Experience',
         duration: '2.5 hours',
         pricing: [
-          'NT 1,500/person｜4 people or more',
           'NT 1,700/person｜3 people',
           'NT 2,000/person｜2 persons',
           'NT 3,000/person｜1 person'
@@ -397,7 +394,6 @@ export const translations = {
         description: 'Sandboard Concept/ Equipment Introduction/ Safety Protection/ Basic Gameplay',
         duration: '2.5 hours',
         pricing: [
-          'NT 1,500/person｜4 people or more',
           'NT 1,700/person｜3 people',
           'NT 2,000/person｜2 persons',
           'NT 3,000/person｜1 person'
@@ -708,6 +704,7 @@ export const translations = {
     faq: 'よくある質問 / お問い合わせ',
     surfwallMessage: '🏄 夏のサーフィン体験 —',
     joinChallenge: 'SurfWallチャレンジに参加！',
+    read_more: '記事を読む',
 
     lessonsOverview: {
       surfing: {
@@ -715,7 +712,6 @@ export const translations = {
         description: 'サーフィンの概念 / 原理 / 実際体験',
         duration: '2.5 時間',
         pricing: [
-          'NT 1,500/人｜4人以上',
           'NT 1,700/人｜3人',
           'NT 2,000/人｜2人',
           'NT 3,000/人｜1人'
@@ -726,7 +722,6 @@ export const translations = {
         description: 'スタンドアップパドルの概念 / 原理 / 実際体験',
         duration: '2.5 時間',
         pricing: [
-          'NT 1,500/人｜4人以上',
           'NT 1,700/人｜3人',
           'NT 2,000/人｜2人',
           'NT 3,000/人｜1人'
@@ -737,7 +732,6 @@ export const translations = {
         description: '砂板の概念 / 装備紹介 / 安全保護 / 基本操作',
         duration: '2.5 時間',
         pricing: [
-          'NT 1,500/人｜4人以上',
           'NT 1,700/人｜3人',
           'NT 2,000/人｜2人',
           'NT 3,000/人｜1人'
