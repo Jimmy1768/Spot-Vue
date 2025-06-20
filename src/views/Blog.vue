@@ -1,18 +1,53 @@
 <template>
   <div class="blog-page">
-    <div class="blog-header">
-      <h1>The SPOT Blog</h1>
-      <p class="subtitle">Stories, tips, and updates from the waves.</p>
-    </div>
+    <section v-if="latest" class="featured-blog">
+      <img
+        v-if="latest.cover_image_url"
+        :src="latest.cover_image_url"
+        alt="cover"
+        class="cover-image"
+      />
+      <div class="blog-meta">
+        <p class="category">{{ latest.category_label }}</p>
+        <h1 class="title">{{ latest.title }}</h1>
+        <p class="excerpt">{{ latest.content.slice(0, 120) }}...</p>
+        <router-link :to="`/blog/${latest.slug}`" class="read-more">
+          {{ t.read_more }}
+        </router-link>
+      </div>
+    </section>
 
-    <div class="blog-placeholder">
-      <p>Blog content coming soon. Stay tuned for updates!</p>
-    </div>
+    <BlogCarousel
+      v-if="posts.length > 1"
+      :posts="posts.slice(1)"
+      :title="t.blog_more"
+    />
   </div>
 </template>
 
 <script setup>
-// No logic needed for now
+import { ref, onMounted, computed } from 'vue'
+import axios from 'axios'
+import BlogCarousel from '@/components/carousels/BlogCarousel.vue'
+import { translations } from '@/i18n/translations'
+import { currentLang } from '@/stores/lang'
+
+const posts = ref([])
+const latest = ref(null)
+
+const t = computed(() => translations[currentLang.value])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/blog')
+    if (data.length > 0) {
+      posts.value = data
+      latest.value = data[0]
+    }
+  } catch (err) {
+    console.error('Failed to load blog posts:', err)
+  }
+})
 </script>
 
 <style scoped>
@@ -20,27 +55,48 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 48px 16px;
+}
+
+.featured-blog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.blog-header h1 {
-  font-size: 2rem;
-  font-weight: bold;
+.cover-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.blog-meta {
+  padding: 0 16px;
+}
+
+.category {
+  color: #999;
+  font-size: 0.9rem;
   margin-bottom: 8px;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 32px;
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
 }
 
-.blog-placeholder {
-  background-color: #f9f9f9;
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.excerpt {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.read-more {
   font-size: 1rem;
-  color: #333;
+  color: #0077cc;
+  text-decoration: underline;
 }
 </style>

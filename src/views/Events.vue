@@ -1,46 +1,103 @@
 <template>
-  <div class="blog-page">
-    <div class="blog-header">
-      <h1>The SPOT Blog</h1>
-      <p class="subtitle">Stories, tips, and updates from the waves.</p>
-    </div>
+  <div class="event-page">
+    <section v-if="latest" class="featured-event">
+      <img
+        v-if="latest.cover_image_url"
+        :src="latest.cover_image_url"
+        alt="cover"
+        class="cover-image"
+      />
+      <div class="event-meta">
+        <p class="category">{{ latest.category_label }}</p>
+        <h1 class="title">{{ latest.title }}</h1>
+        <p class="excerpt">{{ latest.content.slice(0, 120) }}...</p>
+        <router-link :to="`/events/${latest.slug}`" class="read-more">
+          {{ t.read_more }}
+        </router-link>
+      </div>
+    </section>
 
-    <div class="blog-placeholder">
-      <p>Blog content coming soon. Stay tuned for updates!</p>
-    </div>
+    <EventCarousel
+      v-if="events.length > 1"
+      :events="events.slice(1)"
+      :title="t.events"
+    />
   </div>
 </template>
 
 <script setup>
-// No logic needed for now
+import { ref, onMounted, computed } from 'vue'
+import axios from 'axios'
+import EventCarousel from '@/components/carousels/EventsCarousel.vue'
+import { translations } from '@/i18n/translations'
+import { currentLang } from '@/stores/lang'
+
+const events = ref([])
+const latest = ref(null)
+
+const t = computed(() => translations[currentLang.value])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/events')
+    if (data.length > 0) {
+      events.value = data
+      latest.value = data[0]
+    }
+  } catch (err) {
+    console.error('Failed to load events:', err)
+  }
+})
 </script>
 
 <style scoped>
-.blog-page {
+.event-page {
   max-width: 960px;
   margin: 0 auto;
   padding: 48px 16px;
+}
+
+.featured-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.cover-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.event-meta {
   text-align: center;
 }
 
-.blog-header h1 {
+.category {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 32px;
-}
-
-.blog-placeholder {
-  background-color: #f9f9f9;
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.excerpt {
   font-size: 1rem;
-  color: #333;
+  color: #444;
+  margin-bottom: 16px;
 }
+
+.read-more {
+  font-size: 1rem;
+  color: #0077cc;
+  text-decoration: underline;
+}
+
 </style>

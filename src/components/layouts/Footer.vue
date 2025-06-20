@@ -54,21 +54,31 @@ const t = computed(() => translations[currentLang.value])
   background: #f3f3f3;
   font-size: 14px;
   color: #666;
-  padding: 16px;
-  margin-top: 16px
+  padding: 12px;
+  padding-bottom: 24px;
+  margin-top: 16px;
 }
 .footer-bar {
   max-width: 960px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
 }
+.footer-bar > span {
+  margin-right: 200px;
+}
+
+@media (max-width: 768px) {
+  .footer-bar > span {
+    margin-right: 0;
+  }
+}
 .footer-menu {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 .dropdown {

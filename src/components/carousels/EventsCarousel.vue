@@ -1,18 +1,20 @@
 <template>
   <div class="events-carousel">
     <div class="carousel-header">
-      <h2>{{ title }}</h2>
+      <h2>{{ t.events.title }}</h2>
     </div>
 
-    <div class="carousel-container">
+    <div class="carousel-container" v-if="events.length">
       <button class="arrow left" @click="prevSlide">‹</button>
 
       <div class="carousel-slide">
-        <img :src="currentSlide.image" :alt="currentSlide.title" class="slide-image" />
+        <img :src="currentSlide.cover_image_url" :alt="currentSlide.title" class="slide-image" />
         <div class="slide-content">
           <h3 class="slide-title">{{ currentSlide.title }}</h3>
-          <p class="slide-summary">{{ currentSlide.summary }}</p>
-          <router-link :to="currentSlide.link" class="read-more">Read More</router-link>
+          <p class="slide-summary">{{ currentSlide.content }}</p>
+          <router-link :to="`/events/${currentSlide.slug}`" class="read-more">
+            {{ t.read_more }}
+          </router-link>
         </div>
       </div>
 
@@ -22,35 +24,32 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { translations } from '@/i18n/translations'
+import { ref, computed, onMounted } from 'vue'
+import axios from 'axios'
 import { currentLang } from '@/stores/lang'
-
-const props = defineProps({
-  posts: {
-    type: Array,
-    required: true
-  },
-  title: {
-    type: String,
-    default: 'Events'
-  }
-})
+import { translations } from '@/i18n/translations'
 
 const t = computed(() => translations[currentLang.value])
 
+const events = ref([])
 const currentIndex = ref(0)
 
-const currentSlide = computed(() => props.posts[currentIndex.value])
+const fetchEvents = async () => {
+  const res = await axios.get('/events')
+  events.value = res.data
+}
+
+const currentSlide = computed(() => events.value[currentIndex.value] || {})
 
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % props.posts.length
+  currentIndex.value = (currentIndex.value + 1) % events.value.length
 }
 
 const prevSlide = () => {
-  currentIndex.value =
-    (currentIndex.value - 1 + props.posts.length) % props.posts.length
+  currentIndex.value = (currentIndex.value - 1 + events.value.length) % events.value.length
 }
+
+onMounted(fetchEvents)
 </script>
 
 <style scoped>
@@ -93,15 +92,9 @@ const prevSlide = () => {
   margin-bottom: 12px;
 }
 .read-more {
-  background-color: #f97316;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.read-more:hover {
-  background-color: #ea580c;
+  font-size: 1rem;
+  color: #0077cc;
+  text-decoration: underline;
 }
 .arrow {
   font-size: 2rem;

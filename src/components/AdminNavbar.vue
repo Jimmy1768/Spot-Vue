@@ -6,16 +6,14 @@
 
       <!-- Admin-only links -->
       <template v-if="userRole === 'admin'">
-        <RouterLink to="/admin/bookings" class="nav-link">Bookings</RouterLink>
-        <RouterLink to="/admin/email-campaigns" class="nav-link">Emails</RouterLink>
+        <RouterLink to="/admin/bookings" class="nav-link">Bookings</RouterLink>        
         <RouterLink to="/admin/reviews" class="nav-link">Reviews</RouterLink>
-        <RouterLink to="/admin/gallery" class="nav-link">Gallery</RouterLink>
+        <RouterLink to="/admin/email-campaigns" class="nav-link">Emails</RouterLink>        
         <RouterLink to="/admin/events" class="nav-link">Events</RouterLink>
+        <RouterLink to="/admin/blog" class="nav-link">Blog</RouterLink>
+        <RouterLink to="/admin/gallery" class="nav-link">Gallery</RouterLink>
         <RouterLink to="/admin/analytics" class="nav-link">Analytics</RouterLink>
       </template>
-
-      <!-- Shared with staff -->
-      <RouterLink to="/admin/blog" class="nav-link">Blog</RouterLink>
     </div>
   </nav>
 </template>

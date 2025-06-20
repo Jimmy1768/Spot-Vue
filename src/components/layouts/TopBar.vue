@@ -9,19 +9,12 @@
           <a href="https://www.youtube.com/channel/UCQc9oPHnr9ZxdiH1aZKU17g"><i class="fab fa-youtube-square"></i></a>
         </div>
         <router-link to="/" class="top-button">Home</router-link>
-      </div>
-
-      <!-- Center: Surfwall -->
-      <div class="surfwall-message">
-        <span class="surfwall-bubble">
-          {{ t.surfwallMessage }}
-          <router-link to="/surfwall">{{ t.joinChallenge }}</router-link>
-        </span>
-      </div>
+      </div>      
 
       <!-- Right: Blog + Language -->
       <div class="right-group">
         <router-link to="/blog" class="top-button">Blog</router-link>
+        <router-link to="/events" class="top-button">{{ t.events }}</router-link>
         <div class="language-selector" @mouseenter="showLang = true" @mouseleave="showLang = false">
           <div class="selected-lang">
             <span :class="`fi ${languages[currentLang].flag}`"></span>
@@ -98,24 +91,6 @@ const showLang = ref(false)
 
 .social-icons a {
   color: white;
-}
-
-.surfwall-message {
-  text-align: center;
-}
-
-.surfwall-bubble {
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  display: inline-block;
-}
-
-.surfwall-bubble a {
-  color: #f97316;
-  margin-left: 6px;
-  text-decoration: underline;
 }
 
 .language-selector {

@@ -3,10 +3,19 @@
   <div class="main">
     <div class="grid-with-logo">
       <img src="/assets/logo.png" alt="SPOT Logo" class="logo" />
+
+      <!-- Center: Surfwall -->
+      <div class="surfwall-message">
+        <span class="surfwall-bubble">
+          {{ t.surfwallMessage }}
+          <router-link to="/surfwall">{{ t.joinChallenge }}</router-link>
+        </span>
+      </div>
+      
       <div class="grid">
         <GridItem
           :title="t.lessons"
-          :items="[
+          :items="[ 
             { label: t.surfing, key: 'surfing' },
             { label: t.sup, key: 'sup' },
             { label: t.skimboard, key: 'skimboard' },              
@@ -52,7 +61,7 @@
 import { ref, onMounted , computed } from 'vue'
 import GridItem from '@/components/GridItem.vue'
 import { translations } from '@/i18n/translations.js'
-import { currentLang } from '@/stores/lang' // ✅ this is the shared global ref
+import { currentLang } from '@/stores/lang'
 import { imagePaths } from '@/utils/imageResources'
 import EventsCarousel from '@/components/carousels/EventsCarousel.vue'
 
@@ -85,27 +94,6 @@ function preloadImages(paths) {
 onMounted(async () => {
   await preloadImages(imagePaths)
 })
-
-const eventPosts = [
-  {
-    title: 'Catering 特色外燴活動',
-    image: '/assets/events1.png',
-    summary: '從海邊早午餐到特製晚宴，我們提供客製化的外燴服務...',
-    link: '/events/catering'
-  },
-  {
-    title: '場地租借活動空間',
-    image: '/assets/events2.png',
-    summary: '提供適合團體活動與聚會的海邊空間租借服務...',
-    link: '/events/rentals'
-  },
-  {
-    title: 'Depth Run 沉浸式夜間路跑',
-    image: '/assets/events3.png',
-    summary: '體驗夜間跑步與藝術結合的深度路跑活動...',
-    link: '/events/depthrun'
-  }
-]
 </script>
 
 <style scoped>
@@ -115,16 +103,22 @@ const eventPosts = [
   justify-content: center;
   align-items: flex-start;
 }
-.loading-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
+.surfwall-message {
+  text-align: center;
+  margin-bottom: 12px;
 }
-.loading-image {
-  width: 100px;
-  height: auto;
-  margin-bottom: 16px;
+.surfwall-bubble {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: inline-block;
+  color: white;
+}
+.surfwall-bubble a {
+  color: #f97316;
+  margin-left: 6px;
+  text-decoration: underline;
 }
 .grid-with-logo {
   position: relative;
@@ -142,7 +136,7 @@ const eventPosts = [
 }
 .logo {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   width: 240px;
   transform: translate(-50%, -50%);
@@ -151,6 +145,19 @@ const eventPosts = [
   pointer-events: none;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .logo {
+    display: none;
+  }
+}
+
 .carousel {
   height: 200px;
   background: #eee;
