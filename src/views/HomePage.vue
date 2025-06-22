@@ -65,6 +65,7 @@ import { currentLang } from '@/stores/lang'
 import { imagePaths } from '@/utils/imageResources'
 import EventsCarousel from '@/components/carousels/EventsCarousel.vue'
 
+const eventPosts = ref([])
 const showLang = ref(false)
 
 const languages = {

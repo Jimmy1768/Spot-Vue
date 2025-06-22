@@ -10,7 +10,7 @@
       <div class="event-meta">
         <p class="category">{{ latest.category_label }}</p>
         <h1 class="title">{{ latest.title }}</h1>
-        <p class="excerpt">{{ latest.content.slice(0, 120) }}...</p>
+        <p class="excerpt">{{ stripHtml(latest.content).slice(0, 120) }}...</p>
         <router-link :to="`/events/${latest.slug}`" class="read-more">
           {{ t.read_more }}
         </router-link>
@@ -48,6 +48,12 @@ onMounted(async () => {
     console.error('Failed to load events:', err)
   }
 })
+
+function stripHtml(html) {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent || div.innerText || ''
+}
 </script>
 
 <style scoped>

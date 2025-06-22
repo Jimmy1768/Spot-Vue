@@ -10,7 +10,7 @@
     <p class="meta">
       {{ event.event_date.slice(0, 10) }} | {{ event.location }}
     </p>
-    <div class="content">{{ event.content }}</div>
+    <div class="content trix-content" v-html="event.content"></div>
   </div>
 </template>
 
@@ -49,6 +49,11 @@ onMounted(async () => {
   margin: 0 auto;
   padding: 48px 16px;
 }
+.events-post-page h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
 .cover-image {
   width: 100%;
   max-height: 480px;
@@ -64,5 +69,12 @@ onMounted(async () => {
 .content {
   font-size: 1.1rem;
   line-height: 1.8;
+}
+</style>
+
+<style>
+/* GLOBAL OVERRIDE: affect embedded Trix/ActionText captions */
+.attachment__caption {
+  display: none !important;
 }
 </style>

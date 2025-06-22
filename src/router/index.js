@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
-import AdminLayout from '@/components/layouts/AdminLayout.vue'
 
 // Public pages
 import HomePage from '../views/HomePage.vue'
@@ -26,17 +25,6 @@ import Blog from '@/views/Blog.vue'
 import BlogPost from '@/views/BlogPost.vue'
 import Events from '@/views/Events.vue'
 import EventsPost from '@/views/EventsPost.vue'
-
-// Admin pages
-import Login from '../views/admin/Login.vue'
-import Dashboard from '../views/admin/Dashboard.vue'
-import BookingManager from '../views/admin/BookingManager.vue'
-import ReviewManager from '../views/admin/ReviewManager.vue'
-import EmailCampaigns from '../views/admin/EmailCampaigns.vue'
-import EventsManager from '../views/admin/EventsManager.vue'
-import BlogManager from '../views/admin/BlogManager.vue'
-import GalleryManager from '../views/admin/GalleryManager.vue'
-import Analytics from '../views/admin/Analytics.vue'
 
 const routes = [
   {
@@ -65,26 +53,6 @@ const routes = [
       { path: 'events/:slug', component: EventsPost, meta: { title: 'Events Post - The Spot' } }
     ]
   },
-
-  // ✅ Login route
-  { path: '/admin/login', component: Login },
-
-  // Admin layout and admin-only tools
-  {
-    path: '/admin',
-    component: AdminLayout,
-    meta: { requiresAuth: true },
-    children: [
-      { path: 'dashboard', component: Dashboard },      
-      { path: 'bookings', component: BookingManager, meta: { role: 'admin' } },      
-      { path: 'reviews', component: ReviewManager, meta: { role: 'admin' } },
-      { path: 'email-campaigns', component: EmailCampaigns, meta: { role: 'admin' } },      
-      { path: 'events', component: EventsManager, meta: { role: 'admin' } },
-      { path: 'blog', component: BlogManager, meta: { role: 'admin' } },
-      { path: 'gallery', component: GalleryManager, meta: { role: 'admin' } },
-      { path: 'analytics', component: Analytics, meta: { role: 'admin' } }
-    ]
-  }  
 ]
 
 const router = createRouter({

@@ -6,13 +6,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 const backendHost = 'http://192.168.0.119:3100'
 
 const proxyRoutes = [
-  '/login',
-  '/logout',
-  '/current_user',
-  '/blog',
   '/rails',
+  '/blog',  
   '/events',
-  '/uploads'  
 ]
 
 const proxy = proxyRoutes.reduce((acc, route) => {

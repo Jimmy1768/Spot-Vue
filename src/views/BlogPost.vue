@@ -2,10 +2,10 @@
   <div class="blog-post-page" v-if="post">
     <h1>{{ post.title }}</h1>
     <img :src="post.cover_image_url" :alt="post.title" class="cover-image" v-if="post.cover_image_url" />
-    <p class="meta">
+    <p class="meta" v-if="post.published_at">
       {{ post.published_at.slice(0, 10) }} | {{ post.author }}
     </p>
-    <div class="content">{{ post.content }}</div>
+    <div class="content" v-html="post.content"></div>
   </div>
 </template>
 
@@ -56,7 +56,11 @@ onMounted(async () => {
   margin: 0 auto;
   padding: 48px 16px;
 }
-
+.blog-post-page h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
 .cover-image {
   width: 100%;
   max-height: 480px;
@@ -64,15 +68,20 @@ onMounted(async () => {
   border-radius: 8px;
   margin-bottom: 16px;
 }
-
 .meta {
   color: #666;
   font-size: 0.95rem;
   margin-bottom: 12px;
 }
-
 .content {
   font-size: 1.1rem;
   line-height: 1.8;
+}
+</style>
+
+<style>
+/* GLOBAL OVERRIDE: affect embedded Trix/ActionText captions */
+.attachment__caption {
+  display: none !important;
 }
 </style>

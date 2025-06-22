@@ -11,7 +11,7 @@
         <img :src="currentSlide.cover_image_url" :alt="currentSlide.title" class="slide-image" />
         <div class="slide-content">
           <h3 class="slide-title">{{ currentSlide.title }}</h3>
-          <p class="slide-summary">{{ currentSlide.content }}</p>
+          <p class="slide-summary">{{ stripHtml(currentSlide.content).slice(0, 100) }}...</p>
           <router-link :to="`/events/${currentSlide.slug}`" class="read-more">
             {{ t.read_more }}
           </router-link>
@@ -50,6 +50,13 @@ const prevSlide = () => {
 }
 
 onMounted(fetchEvents)
+
+function stripHtml(html) {
+  const div = document.createElement("div")
+  div.innerHTML = html
+  return div.textContent || div.innerText || ""
+}
+
 </script>
 
 <style scoped>

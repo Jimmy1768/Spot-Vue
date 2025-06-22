@@ -18,7 +18,7 @@
           <p class="category">{{ currentSlide.category_label }}</p>
           <h3 class="slide-title">{{ currentSlide.title }}</h3>
           <p class="slide-summary">
-            {{ currentSlide.content.slice(0, 100) }}...
+            {{ stripHtml(currentSlide.content).slice(0, 100) }}...
           </p>
           <router-link :to="`/blog/${currentSlide.slug}`" class="read-more">
             {{ t.read_more }}
@@ -59,6 +59,13 @@ onMounted(async () => {
     console.error('Error loading blog posts:', err)
   }
 })
+
+function stripHtml(html) {
+  const div = document.createElement("div")
+  div.innerHTML = html
+  return div.textContent || div.innerText || ""
+}
+
 </script>
 
 
@@ -69,25 +76,21 @@ onMounted(async () => {
   padding: 32px 0;
   text-align: center;
 }
-
 .carousel-header h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
-
 .carousel-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .carousel-slide {
   max-width: 600px;
   width: 100%;
   padding: 0 16px;
   text-align: left;
 }
-
 .slide-image {
   width: 100%;
   height: auto;
@@ -95,31 +98,26 @@ onMounted(async () => {
   border-radius: 8px;
   margin-bottom: 12px;
 }
-
 .slide-title {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 8px;
 }
-
 .category {
   font-size: 0.9rem;
   color: #999;
   margin-bottom: 4px;
 }
-
 .slide-summary {
   font-size: 1rem;
   color: #444;
   margin-bottom: 12px;
 }
-
 .read-more {
   font-size: 1rem;
   color: #0077cc;
   text-decoration: underline;
 }
-
 .arrow {
   font-size: 2rem;
   background: none;
@@ -128,12 +126,10 @@ onMounted(async () => {
   cursor: pointer;
   padding: 0 12px;
 }
-
 .arrow:disabled {
   opacity: 0.3;
   cursor: default;
 }
-
 .arrow:hover:not(:disabled) {
   color: #ea580c;
 }
