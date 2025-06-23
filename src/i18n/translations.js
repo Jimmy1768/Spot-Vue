@@ -278,18 +278,15 @@ export const translations = {
 
       directionsTitle: '海洋教育三大方向四項內容',
       directions: [
-        {
-          
+        {          
           title: '知海｜海洋知識',
           text: '大小朋友都要知道的基本海洋知識，包含西岸海洋的形成、海岸地形介紹、潮汐原理、海洋生態簡介以及海洋周邊的水域休閒活動介紹。'
         },
-        {
-          
+        {          
           title: '親海｜生態導覽',
           text: '專業導覽人員解說苗栗沿岸防風林及地形介紹、中港溪河口生態，紅樹林分佈及作用、沿岸動、植物特色導覽（如：紫斑蝶棲息季節、陸地上的蟹老闆-角眼沙蟹、植物界戰爭）。'
         },
-        {
-          
+        {          
           title: '愛海｜淨灘與漂流木DIY',
           text: '提倡淨灘機會教育，以實際行動愛護環境感受人為所帶來的環境影響；了解世界氣候變化所帶來環境保護議題、與世界攜手進行國際淨灘日，最後，淨灘再回收漂流木手繪紀念完美的一天。'
         }
@@ -621,18 +618,15 @@ export const translations = {
 
       directionsTitle: 'Three Themes, Four Programs',
       directions: [
-        {
-          
+        {          
           title: 'Know the Ocean｜Knowledge',
           text: 'Basic marine knowledge for all ages, including coastal formation, landforms, tides, ecosystems, and water sports activities.'
         },
-        {
-          
+        {          
           title: 'Connect with the Ocean｜Guided Tours',
           text: 'Professionals explain local coastal forests, estuary ecosystems, mangroves, and unique local wildlife and plants.'
         },
-        {
-          
+        {          
           title: 'Love the Ocean｜Beach Cleanup & DIY',
           text: 'Hands-on learning to protect the environment through cleanups, climate awareness, and upcycled driftwood crafts.'
         }
@@ -957,18 +951,15 @@ export const translations = {
 
       directionsTitle: '海洋教育の3つの方向と4つの内容',
       directions: [
-        {
-          
+        {          
           title: '知る｜海洋知識',
           text: '海洋の成り立ち、海岸地形、潮の仕組み、生態系、ウォーターアクティビティなど、基本的な知識を学びます。'
         },
-        {
-          
+        {          
           title: '親しむ｜生態ガイド',
           text: '沿岸の防風林、中港渓の河口生態、マングローブ、動植物などについて専門ガイドが紹介します。'
         },
-        {
-          
+        {          
           title: '愛する｜ビーチクリーン＆流木DIY',
           text: '環境問題を考え、清掃活動を通して環境を守る心を育てます。回収した流木で記念クラフトも楽しめます。'
         }

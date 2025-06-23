@@ -54,11 +54,14 @@ const router = useRouter()
 
 const t = computed(() => translations[currentLang.value])
 
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
+
 const baseLessons = [
-  { key: 'surfing', component: Surfing, image: '/assets/surfing.png' },
-  { key: 'sup', component: SUP, image: '/assets/sup.png' },
-  { key: 'skimboard', component: Skimboard, image: '/assets/skimboard.png' },
-  { key: 'supskate', component: SUPSKATE, image: '/assets/supskate.png' }
+  { key: 'surfing', component: Surfing, image: `${prefix}/assets/surfing.png` },
+  { key: 'sup', component: SUP, image: `${prefix}/assets/sup.png` },
+  { key: 'skimboard', component: Skimboard, image: `${prefix}/assets/skimboard.png` },
+  { key: 'supskate', component: SUPSKATE, image: `${prefix}/assets/supskate.png` }
 ]
 
 const lessonTypes = computed(() =>

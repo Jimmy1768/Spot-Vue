@@ -72,24 +72,26 @@ const openLineBooking = () => {
   window.open('https://line.me/R/ti/p/@197hifeq', '_blank')
 }
 
-const images = [
-  '/assets/hostel1.png',
-  '/assets/hostel2.png',
-  '/assets/hostel3.png',
-  '/assets/hostel4.png',
-  '/assets/hostel5.png'
-]
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
 
+const images = [
+  `${prefix}/assets/hostel1.png`,
+  `${prefix}/assets/hostel2.png`,
+  `${prefix}/assets/hostel3.png`,
+  `${prefix}/assets/hostel4.png`,
+  `${prefix}/assets/hostel5.png`
+]
 const currentImage = ref(images[0])
 
 const carouselTexts = computed(() => translations[currentLang.value].hostelcarousel)
 
 const currentIndex = ref(0)
 const carouselImages = [
-  '/assets/about.png',
-  '/assets/rentals.png',
-  '/assets/events.png',
-  '/assets/lessons.png'
+  `${prefix}/assets/about.png`,
+  `${prefix}/assets/rentals.png`,
+  `${prefix}/assets/events.png`,
+  `${prefix}/assets/lessons.png`
 ]
 
 const currentSlide = computed(() => carouselTexts.value[currentIndex.value])
@@ -98,11 +100,9 @@ const prevSlide = () => {
   currentIndex.value =
     (currentIndex.value - 1 + carouselImages.length) % carouselImages.length
 }
-
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % carouselImages.length
 }
-
 </script>
 
 <style scoped>

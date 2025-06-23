@@ -51,7 +51,11 @@
       </div>
     </div>
 
-    <FaqCarousel :posts="faqPosts" />
+    <FaqCarousel
+      v-if="lessonsQnaPosts.length > 0"
+      :posts="lessonsQnaPosts"
+      :title="t.blog_more"
+    />
   </div>
 </template>
 
@@ -64,14 +68,25 @@ import FaqCarousel from '@/components/carousels/FaqCarousel.vue'
 
 const t = computed(() => translations[currentLang.value].faqdetails)
 
-const faqPosts = ref([])
+const lessonsQnaPosts = ref([])
 
 onMounted(async () => {
   try {
     const { data } = await axios.get('/blog')
-    faqPosts.value = data.filter(post => post.category === 'question_qna')
+    console.log('Fetched blog posts for FAQ:', data)
+
+    // Debug each post's category
+    data.forEach(post => {
+      console.log(`Post: ${post.title}, Category: ${post.category}`)
+    })
+
+    lessonsQnaPosts.value = data.filter(
+      post => post.category === 'lessons_qna'
+    )
+
+    console.log('Filtered lessonsQnaPosts:', lessonsQnaPosts.value)
   } catch (err) {
-    console.error('Failed to load FAQ blog posts:', err)
+    console.error('Failed to fetch FAQ blog posts:', err)
   }
 })
 
