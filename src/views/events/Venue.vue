@@ -20,8 +20,25 @@ import { computed } from 'vue'
 import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
 
-const t = computed(() => translations[currentLang.value].venuedetails)
+// Check if you're in production (Vite provides this env var)
+const isProd = import.meta.env.PROD
+
+const t = computed(() => {
+  const data = translations[currentLang.value].venuedetails
+
+  // Clone sections and patch image paths if in production
+  const patchedSections = data.sections.map(section => ({
+    ...section,
+    image: isProd ? `/frontend${section.image}` : section.image
+  }))
+
+  return {
+    ...data,
+    sections: patchedSections
+  }
+})
 </script>
+
 
 <style scoped>
 .venue-page {
