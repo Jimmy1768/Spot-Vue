@@ -17,7 +17,11 @@ const proxy = proxyRoutes.reduce((acc, route) => {
 }, {})
 
 export default defineConfig({
-  base: '/frontend/', // 👈 This sets the public path for production builds
+  base: '/frontend/',
+  build: {
+    outDir: 'dist/frontend',
+    emptyOutDir: true,
+  },
   plugins: [
     vue(),
     vueDevTools(),
@@ -29,9 +33,5 @@ export default defineConfig({
   },
   server: {
     proxy
-  },
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
   }
 })
