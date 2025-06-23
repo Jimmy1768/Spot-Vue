@@ -56,12 +56,24 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import axios from 'axios'
 import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
 import FaqCarousel from '@/components/carousels/FaqCarousel.vue'
 
 const t = computed(() => translations[currentLang.value].faqdetails)
+
+const faqPosts = ref([])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/blog')
+    faqPosts.value = data.filter(post => post.category === 'question_qna')
+  } catch (err) {
+    console.error('Failed to load FAQ blog posts:', err)
+  }
+})
 
 const form = ref({
   name: '',
@@ -74,14 +86,6 @@ const submitForm = () => {
   console.log('Form submitted:', form.value)
   // TODO: Add backend logic
 }
-
-const faqPosts = [
-  { title: 'Surf衝浪課程Q＆A', image: '/assets/faq2.png' },
-  { title: 'Land SUP陸上衝浪課程注意事項', image: '/assets/faq3.png' },
-  { title: 'Land SUP陸上衝浪課程注意事項', image: '/assets/faq4.png' },
-  { title: 'SKIM沙板課程Q＆A', image: '/assets/faq5.png' },
-  { title: '水上運動器材租借及注意事項', image: '/assets/faq6.png' }
-]
 </script>
 
 <style scoped>

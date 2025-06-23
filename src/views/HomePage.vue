@@ -15,13 +15,13 @@
       <div class="grid">
         <GridItem
           :title="t.lessons"
-          :items="[ 
+          :items="[
             { label: t.surfing, key: 'surfing' },
             { label: t.sup, key: 'sup' },
-            { label: t.skimboard, key: 'skimboard' },              
+            { label: t.skimboard, key: 'skimboard' },
             { label: t.supskate, key: 'supskate' }
           ]"
-          image="/assets/lessons.png"
+          :image="`${prefix}/assets/lessons.png`"
         />
         <GridItem
           :title="t.rentals"
@@ -29,7 +29,7 @@
             { label: t.equipment, link: '/rentals' },
             { label: t.hostel, link: '/booking/hostel' }
           ]"
-          image="/assets/rentals.png"
+          :image="`${prefix}/assets/rentals.png`"
         />
         <GridItem
           :title="t.events"
@@ -38,7 +38,7 @@
             { label: t.venue, link: '/events/rentals' },
             { label: t.depthrun, link: '/events/depthrun' }
           ]"
-          image="/assets/events.png"
+          :image="`${prefix}/assets/events.png`"
         />
         <GridItem
           :title="t.about"
@@ -47,7 +47,7 @@
             { label: t.instructors, link: '/about/instructors' },
             { label: t.faq, link: '/about/faq' }
           ]"
-          image="/assets/about.png"
+          :image="`${prefix}/assets/about.png`"
         />
       </div>
     </div>
@@ -64,6 +64,9 @@ import { translations } from '@/i18n/translations.js'
 import { currentLang } from '@/stores/lang'
 import { imagePaths } from '@/utils/imageResources'
 import EventsCarousel from '@/components/carousels/EventsCarousel.vue'
+
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
 
 const eventPosts = ref([])
 const showLang = ref(false)

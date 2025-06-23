@@ -3,14 +3,13 @@
     <h1 class="title">{{ t.title }}</h1>
     <p class="description" v-html="t.intro"></p>
 
-    <!-- Directions & Pricing Side-by-Side -->
     <div class="content-wrapper">
       <!-- Left Frame -->
       <div class="left-frame">
         <div class="section-block">
           <h2 class="subtitle">{{ t.directionsTitle }}</h2>
           <div class="directions">
-            <div class="direction" v-for="(item, index) in t.directions" :key="index">
+            <div class="direction" v-for="(item, index) in directions" :key="index">
               <img :src="item.image" class="direction-image" :alt="item.title" />
               <div class="direction-text">
                 <h3>{{ item.title }}</h3>
@@ -36,7 +35,7 @@
             </div>
             <p class="note">{{ t.note }}</p>
             <p class="booking-link">
-              {{ t.lineBooking }} 
+              {{ t.lineBooking }}
               <a href="https://line.me/R/ti/p/@197hifeq" target="_blank">LINE</a>
             </p>
           </div>
@@ -44,41 +43,69 @@
       </div>
     </div>
 
-    <EducationCarousel :posts="blogPosts" />
+    <!-- 🧭 Blog carousel showing only marine_education posts -->
+    <BlogCarousel
+      v-if="marineEducationPosts.length > 0"
+      :posts="marineEducationPosts"
+      :title="t.blog_more"
+    />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
+import axios from 'axios'
 import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
-import EducationCarousel from '@/components/carousels/EducationCarousel.vue'
+import BlogCarousel from '@/components/carousels/BlogCarousel.vue'
+
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
 
 const t = computed(() => translations[currentLang.value].educationdetails)
 
-const blogPosts = [
+const directions = computed(() => [
   {
-    id: 1,
-    title: '認識潮汐與海流',
-    image: '/assets/blog1.png',
-    summary: '這堂課帶你了解台灣西岸的潮汐變化與海流影響...',
-    link: '/blog/1'
+    image: `${prefix}/assets/education1.png`,
+    title: t.value.directions[0].title,
+    text: t.value.directions[0].text
   },
   {
-    id: 2,
-    title: '中港溪口紅樹林探秘',
-    image: '/assets/blog2.png',
-    summary: '一起走訪苗栗河口紅樹林，觀察特殊生態與動植物...',
-    link: '/blog/2'
+    image: `${prefix}/assets/education2.png`,
+    title: t.value.directions[1].title,
+    text: t.value.directions[1].text
   },
   {
-    id: 3,
-    title: '漂流木創作與環保理念',
-    image: '/assets/blog3.png',
-    summary: '用海灘漂流木手作紀念品，體驗永續與創意並存的課程...',
-    link: '/blog/3'
+    image: `${prefix}/assets/education3.png`,
+    title: t.value.directions[2].title,
+    text: t.value.directions[2].text
   }
-]
+])
+
+const posts = ref([])
+const marineEducationPosts = ref([])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/blog')
+    console.log('Fetched blog posts:', data) // 🔍 Log all blog posts
+
+    posts.value = data
+
+    // Log category values to verify what's being filtered
+    data.forEach(post => {
+      console.log(`Post: ${post.title}, Category: ${post.category}`)
+    })
+
+    marineEducationPosts.value = data.filter(
+      post => post.category === 'marine_education'
+    )
+
+    console.log('Filtered marineEducationPosts:', marineEducationPosts.value)
+  } catch (err) {
+    console.error('Failed to fetch blog posts:', err)
+  }
+})
 </script>
 
 <style scoped>
