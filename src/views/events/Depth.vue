@@ -4,7 +4,7 @@
     <p class="intro" v-html="t.intro" />
 
     <div class="grid">
-      <div class="depth-card" v-for="(item, i) in t.sections" :key="i">
+      <div class="depth-card" v-for="(item, i) in sections" :key="i">
         <div class="top-row">
           <img :src="item.image" class="depth-image" />
           <div class="depth-text">
@@ -23,10 +23,40 @@
 
 <script setup>
 import { computed } from 'vue'
-import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
+import { translations } from '@/i18n/translations'
+
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
 
 const t = computed(() => translations[currentLang.value].depthdetails)
+
+const sections = computed(() => [
+  {
+    image: `${prefix}/assets/depth1.png`,
+    title: t.value.sections[0].title,
+    text: t.value.sections[0].text,
+    caption: t.value.sections[0].caption
+  },
+  {
+    image: `${prefix}/assets/depth2.png`,
+    title: t.value.sections[1].title,
+    text: t.value.sections[1].text,
+    caption: t.value.sections[1].caption
+  },
+  {
+    image: `${prefix}/assets/depth3.png`,
+    title: t.value.sections[2].title,
+    text: t.value.sections[2].text,
+    caption: t.value.sections[2].caption
+  },
+  {
+    image: `${prefix}/assets/depth4.png`,
+    title: t.value.sections[3].title,
+    text: t.value.sections[3].text,
+    caption: t.value.sections[3].caption
+  }
+])
 </script>
 
 <style scoped>

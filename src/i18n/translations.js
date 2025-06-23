@@ -232,12 +232,12 @@ export const translations = {
       ​給自己一個放空、放鬆的機會, 位於台灣西岸竹南海邊的SPOT, 提供簡單的場地, 帶給您不簡單的回憶!`,
 
       sections: [
-        { image: '/assets/venue1.png', title: '成果發表', text: '​社團、學校成果發表會' },
-        { image: '/assets/venue2.png', title: '私人派對', text: '生日、同學會' },
-        { image: '/assets/venue3.png', title: '戶外婚禮', text: '婚禮、紀念日派對' },
-        { image: '/assets/venue4.png', title: '工作坊', text: '手作、咖啡、品酒' },
-        { image: '/assets/venue5.png', title: '展演空間', text: '音樂會、戶外佈展' },
-        { image: '/assets/venue6.png', title: '戶外教學', text: '​生態探索、海洋教育' }
+        { title: '成果發表', text: '​社團、學校成果發表會' },
+        { title: '私人派對', text: '生日、同學會' },
+        { title: '戶外婚禮', text: '婚禮、紀念日派對' },
+        { title: '工作坊', text: '手作、咖啡、品酒' },
+        { title: '展演空間', text: '音樂會、戶外佈展' },
+        { title: '戶外教學', text: '​生態探索、海洋教育' }
       ]
     },
 
@@ -246,26 +246,22 @@ export const translations = {
       intro: `​我們期待SPOT的朋友們來到海邊不只是玩水, 而是藉由水上活動成為一個媒介, 認識海邊不同生活圈的新朋友, 也更熟悉海洋文化、環境和社群, 讓生活海海洋產生更深遠的連結。<br/><br/>
     SPOT 和苗栗縣水上運動觀光休閒發展協會合作, 開發了三個竹南海洋深入遊程, 我們也和菲律賓Kite-club Palawan結盟, 利用台灣秋、冬季節, 開團帶大家前往菲律賓深度旅遊+衝浪, 有機會絕對不能錯過!`,
       sections: [
-        {
-          image: '/assets/depth1.png',
+        {        
           title: '浪花餐桌​',
           text: ['海洋教育/淨灘', '浪花套餐', '海洋創意手作'],
           caption: '慢魚海岸 - 浪花村海域觀光發展計畫'
         },
-        {
-          image: '/assets/depth2.png',
+        {          
           title: '海洋療癒',
           text: ['海洋教育/淨灘', '沙灘瑜珈/拳擊/手作', '浪花下午茶'],
           caption: '慢魚海岸 - 浪花村海域觀光發展計畫'
         },
-        {
-          image: '/assets/depth3.png',
+        {          
           title: '慢魚海岸',
           text: ['海洋教育', '親水活動體驗', '浪花套餐'],
           caption: '慢魚海岸 - 浪花村海域觀光發展計畫'
         },
-        {
-          image: '/assets/depth4.png',
+        {          
           title: '菲律賓巴拉望衝浪深度之旅',
           text: ['浪點探索', '進階衝浪課', '生活體驗', '在地文化導覽', '跳島'],
           caption: 'Palawan, Philippines'
@@ -575,12 +571,12 @@ export const translations = {
       Whether it’s a graduation party or birthday bash, even if you don’t want to get wet—<br/><br/>
       Give yourself a break! Located on the west coast of Taiwan in Zhunan, SPOT offers simple venue rental for unforgettable experiences!`,
       sections: [
-        { image: '/assets/venue1.png', title: 'Showcase Events', text: 'Club or school presentations' },
-        { image: '/assets/venue2.png', title: 'Private Parties', text: 'Birthdays, reunions' },
-        { image: '/assets/venue3.png', title: 'Outdoor Weddings', text: 'Weddings, anniversary celebrations' },
-        { image: '/assets/venue4.png', title: 'Workshops', text: 'DIY, coffee, wine tasting' },
-        { image: '/assets/venue5.png', title: 'Exhibition Space', text: 'Concerts, outdoor installations' },
-        { image: '/assets/venue6.png', title: 'Outdoor Education', text: 'Ecological exploration, marine education' }
+        { title: 'Showcase Events', text: 'Club or school presentations' },
+        { title: 'Private Parties', text: 'Birthdays, reunions' },
+        { title: 'Outdoor Weddings', text: 'Weddings, anniversary celebrations' },
+        { title: 'Workshops', text: 'DIY, coffee, wine tasting' },
+        { title: 'Exhibition Space', text: 'Concerts, outdoor installations' },
+        { title: 'Outdoor Education', text: 'Ecological exploration, marine education' }
       ]
     },
 
@@ -590,25 +586,25 @@ export const translations = {
     Together with the Miaoli County Water Sports Tourism Association, we created 3 Zhunan-based marine programs. Plus, we partnered with Kite-club Palawan in the Philippines to launch travel + surfing camps in the fall and winter!`,
       sections: [
         {
-          image: '/assets/depth1.png',
+          
           title: 'Wave Table',
           text: ['Marine education / beach cleanup', 'Surfside meals', 'Ocean-inspired crafts'],
           caption: 'Slow Fish Coast – Langhua Village Marine Tourism Project'
         },
         {
-          image: '/assets/depth2.png',
+          
           title: 'Ocean Healing',
           text: ['Marine education / beach cleanup', 'Yoga / boxing / crafts', 'Afternoon tea by the sea'],
           caption: 'Slow Fish Coast – Langhua Village Marine Tourism Project'
         },
         {
-          image: '/assets/depth3.png',
+          
           title: 'Slow Fish Coast',
           text: ['Marine education', 'Water activity experience', 'Surfside meals'],
           caption: 'Slow Fish Coast – Langhua Village Marine Tourism Project'
         },
         {
-          image: '/assets/depth4.png',
+          
           title: 'Palawan Surf Travel Experience',
           text: ['Surf spot discovery', 'Advanced surf classes', 'Lifestyle experience', 'Local culture tour', 'Island hopping'],
           caption: 'Palawan, Philippines'
@@ -913,12 +909,12 @@ export const translations = {
       卒業パーティーや誕生日会、海を楽しみたいけど泳ぎたくない人にもおすすめ！<br/><br/>
       自分にリラックスする時間を！台湾西岸の竹南海辺にあるSPOTは、シンプルだけど思い出に残る場所を提供します。`,
       sections: [
-        { image: '/assets/venue1.png', title: '成果発表会', text: 'クラブ・学校の発表イベント' },
-        { image: '/assets/venue2.png', title: 'プライベートパーティー', text: '誕生日会、同窓会' },
-        { image: '/assets/venue3.png', title: '屋外ウェディング', text: '結婚式、記念日パーティー' },
-        { image: '/assets/venue4.png', title: 'ワークショップ', text: 'ハンドメイド、コーヒー、ワイン' },
-        { image: '/assets/venue5.png', title: '展示・公演スペース', text: '音楽会、屋外展示' },
-        { image: '/assets/venue6.png', title: '屋外授業', text: '自然探索、海洋教育' }
+        { title: '成果発表会', text: 'クラブ・学校の発表イベント' },
+        { title: 'プライベートパーティー', text: '誕生日会、同窓会' },
+        { title: '屋外ウェディング', text: '結婚式、記念日パーティー' },
+        { title: 'ワークショップ', text: 'ハンドメイド、コーヒー、ワイン' },
+        { title: '展示・公演スペース', text: '音楽会、屋外展示' },
+        { title: '屋外授業', text: '自然探索、海洋教育' }
       ]
     },
 
@@ -928,25 +924,25 @@ export const translations = {
     苗栗県水上スポーツ観光協会と連携し、竹南エリアの3つの海洋体験プログラムを開発。さらに、フィリピン・パラワン島のKite-club Palawanと提携し、秋冬には現地ツアー＋サーフキャンプも開催！`,
       sections: [
         {
-          image: '/assets/depth1.png',
+          
           title: '浪花テーブル',
           text: ['海洋教育 / ビーチクリーン', '浪花セットメニュー', '海をテーマにした手作り体験'],
           caption: 'スローフィッシュコースト - 浪花村マリンツーリズム計画'
         },
         {
-          image: '/assets/depth2.png',
+          
           title: '海の癒し',
           text: ['海洋教育 / ビーチクリーン', 'ヨガ / ボクシング / 手作り体験', '浪花アフタヌーンティー'],
           caption: 'スローフィッシュコースト - 浪花村マリンツーリズム計画'
         },
         {
-          image: '/assets/depth3.png',
+          
           title: 'スローフィッシュコースト',
           text: ['海洋教育', '水辺アクティビティ体験', '浪花セットメニュー'],
           caption: 'スローフィッシュコースト - 浪花村マリンツーリズム計画'
         },
         {
-          image: '/assets/depth4.png',
+          
           title: 'パラワン・フィリピン サーフ体験ツアー',
           text: ['サーフスポット探索', '上級サーフィン講座', 'ライフスタイル体験', '現地文化ガイドツアー', 'アイランドホッピング'],
           caption: 'パラワン、フィリピン'

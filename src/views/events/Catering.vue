@@ -18,25 +18,28 @@ import { computed } from 'vue'
 import { currentLang } from '@/stores/lang'
 import { translations } from '@/i18n/translations'
 
+const isProd = import.meta.env.MODE === 'production'
 const t = computed(() => translations[currentLang.value].cateringdetails)
 
-const sections = [
+const prefix = isProd ? '/frontend' : ''
+
+const sections = computed(() => [
   {
-    image: '/assets/catering1.png',
+    image: `${prefix}/assets/catering1.png`,
     title: t.value.section1Title,
     text: t.value.section1Text
   },
   {
-    image: '/assets/catering2.png',
+    image: `${prefix}/assets/catering2.png`,
     title: t.value.section2Title,
     text: t.value.section2Text
   },
   {
-    image: '/assets/catering3.png',
+    image: `${prefix}/assets/catering3.png`,
     title: t.value.section3Title,
     text: t.value.section3Text
   }
-]
+])
 </script>
 
 <style scoped>

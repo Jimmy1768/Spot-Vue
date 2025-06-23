@@ -7,7 +7,7 @@ const backendHost = 'http://192.168.0.119:3100'
 
 const proxyRoutes = [
   '/rails',
-  '/blog',  
+  '/blog',
   '/events',
 ]
 
@@ -16,22 +16,31 @@ const proxy = proxyRoutes.reduce((acc, route) => {
   return acc
 }, {})
 
-export default defineConfig({
-  base: '/frontend/',
-  build: {
-    outDir: 'dist/frontend',
-    emptyOutDir: true,
-  },
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+export default defineConfig(({ mode }) => {
+  const isProd = mode === 'production'
+
+  return {
+    base: isProd ? '/frontend/' : '/',
+
+    build: {
+      outDir: 'dist/frontend',
+      emptyOutDir: true,
+    },
+
+    plugins: [
+      vue(),
+      vueDevTools(),
+    ],
+
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      }
+    },
+
+    server: {
+      proxy
     }
-  },
-  server: {
-    proxy
   }
 })
+

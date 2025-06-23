@@ -4,13 +4,13 @@
     <p class="intro" v-html="t.intro" />
 
     <div class="venue-grid">
-      <div class="venue-card" v-for="(item, i) in t.sections" :key="i">
+      <div class="venue-card" v-for="(item, i) in sections" :key="i">
         <img :src="item.image" class="venue-image" :alt="item.title" />
         <div class="content-box">
-            <h3 class="venue-title">{{ item.title }}</h3>
-            <p class="venue-text">{{ item.text }}</p>
+          <h3 class="venue-title">{{ item.title }}</h3>
+          <p class="venue-text">{{ item.text }}</p>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,25 +20,44 @@ import { computed } from 'vue'
 import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
 
-// Check if you're in production (Vite provides this env var)
-const isProd = import.meta.env.PROD
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
 
-const t = computed(() => {
-  const data = translations[currentLang.value].venuedetails
+const t = computed(() => translations[currentLang.value].venuedetails)
 
-  // Clone sections and patch image paths if in production
-  const patchedSections = data.sections.map(section => ({
-    ...section,
-    image: isProd ? `/frontend${section.image}` : section.image
-  }))
-
-  return {
-    ...data,
-    sections: patchedSections
+const sections = computed(() => [
+  {
+    image: `${prefix}/assets/venue1.png`,
+    title: t.value.sections[0].title,
+    text: t.value.sections[0].text
+  },
+  {
+    image: `${prefix}/assets/venue2.png`,
+    title: t.value.sections[1].title,
+    text: t.value.sections[1].text
+  },
+  {
+    image: `${prefix}/assets/venue3.png`,
+    title: t.value.sections[2].title,
+    text: t.value.sections[2].text
+  },
+  {
+    image: `${prefix}/assets/venue4.png`,
+    title: t.value.sections[3].title,
+    text: t.value.sections[3].text
+  },
+  {
+    image: `${prefix}/assets/venue5.png`,
+    title: t.value.sections[4].title,
+    text: t.value.sections[4].text
+  },
+  {
+    image: `${prefix}/assets/venue6.png`,
+    title: t.value.sections[5].title,
+    text: t.value.sections[5].text
   }
-})
+])
 </script>
-
 
 <style scoped>
 .venue-page {
