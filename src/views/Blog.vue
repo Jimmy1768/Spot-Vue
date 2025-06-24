@@ -52,6 +52,11 @@ onMounted(async () => {
 function stripHtml(html) {
   const div = document.createElement('div')
   div.innerHTML = html
+
+  // Remove all <figure>, <img>, and <figcaption> elements
+  const unwantedTags = div.querySelectorAll('figure, img, figcaption')
+  unwantedTags.forEach(tag => tag.remove())
+
   return div.textContent || div.innerText || ''
 }
 </script>

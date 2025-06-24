@@ -5,26 +5,37 @@
     </div>
 
     <div class="carousel-container">
-      <button class="arrow left" @click="prevSlide">‹</button>
+      <button class="arrow left" @click="prevSlide" :disabled="posts.length <= 1">‹</button>
 
-      <div class="carousel-slide">
-        <img :src="currentSlide.image" :alt="currentSlide.title" class="slide-image" />
+      <div class="carousel-slide" v-if="currentSlide">
+        <img
+          v-if="currentSlide.cover_image_url"
+          :src="currentSlide.cover_image_url"
+          :alt="currentSlide.title"
+          class="slide-image"
+        />
         <div class="slide-content">
+          <p class="category">{{ currentSlide.category_label }}</p>
           <h3 class="slide-title">{{ currentSlide.title }}</h3>
-          <p class="slide-summary">{{ currentSlide.summary }}</p>
-          <router-link :to="`/blog/${currentSlide.id}`" class="read-more">Read More</router-link>
+          <p class="slide-summary">
+            {{ stripHtml(currentSlide.content).slice(0, 100) }}...
+          </p>
+          <router-link :to="`/blog/${currentSlide.slug}`" class="read-more">
+            {{ t.read_more }}
+          </router-link>
         </div>
       </div>
 
-      <button class="arrow right" @click="nextSlide">›</button>
+      <button class="arrow right" @click="nextSlide" :disabled="posts.length <= 1">›</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import { translations } from '@/i18n/translations'
+import { currentLang } from '@/stores/lang'
 
-// Mock data until real blog posts are passed in via props
 const props = defineProps({
   posts: {
     type: Array,
@@ -36,9 +47,10 @@ const props = defineProps({
   }
 })
 
+const t = computed(() => translations[currentLang.value])
 const currentIndex = ref(0)
 
-const currentSlide = computed(() => props.posts[currentIndex.value])
+const currentSlide = computed(() => props.posts[currentIndex.value] || null)
 
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % props.posts.length
@@ -47,6 +59,12 @@ const nextSlide = () => {
 const prevSlide = () => {
   currentIndex.value =
     (currentIndex.value - 1 + props.posts.length) % props.posts.length
+}
+
+function stripHtml(html) {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent || div.innerText || ''
 }
 </script>
 

@@ -46,11 +46,9 @@ const currentSlide = computed(() => posts.value[currentIndex.value] || null)
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % posts.value.length
 }
-
 const prevSlide = () => {
   currentIndex.value = (currentIndex.value - 1 + posts.value.length) % posts.value.length
 }
-
 onMounted(async () => {
   try {
     const { data } = await axios.get('/blog')
@@ -59,15 +57,12 @@ onMounted(async () => {
     console.error('Error loading blog posts:', err)
   }
 })
-
 function stripHtml(html) {
   const div = document.createElement("div")
   div.innerHTML = html
   return div.textContent || div.innerText || ""
 }
-
 </script>
-
 
 <style scoped>
 .events-carousel {

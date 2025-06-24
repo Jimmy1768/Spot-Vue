@@ -43,8 +43,7 @@
       </div>
     </div>
 
-    <!-- 🧭 Blog carousel showing only marine_education posts -->
-    <BlogCarousel
+    <EducationCarousel
       v-if="marineEducationPosts.length > 0"
       :posts="marineEducationPosts"
       :title="t.blog_more"
@@ -57,7 +56,7 @@ import { computed, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { translations } from '@/i18n/translations'
 import { currentLang } from '@/stores/lang'
-import BlogCarousel from '@/components/carousels/BlogCarousel.vue'
+import EducationCarousel from '@/components/carousels/EducationCarousel.vue'
 
 const isProd = import.meta.env.MODE === 'production'
 const prefix = isProd ? '/frontend' : ''
@@ -106,6 +105,18 @@ onMounted(async () => {
     console.error('Failed to fetch blog posts:', err)
   }
 })
+
+function stripHtml(html) {
+  const div = document.createElement('div')
+  div.innerHTML = html
+
+  // Remove image-related tags
+  const unwantedTags = div.querySelectorAll('figure, img, figcaption')
+  unwantedTags.forEach(tag => tag.remove())
+
+  return div.textContent || div.innerText || ''
+}
+
 </script>
 
 <style scoped>

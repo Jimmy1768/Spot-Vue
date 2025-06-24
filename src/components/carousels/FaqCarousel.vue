@@ -4,14 +4,15 @@
     <div class="carousel-wrapper">
       <button class="arrow left" @click="scrollLeft">‹</button>
       <div class="carousel-container" ref="carousel">
-        <div
+        <router-link
           v-for="(item, index) in posts"
           :key="index"
+          :to="`/blog/${item.slug}`"
           class="carousel-item"
         >
           <img :src="item.cover_image_url" :alt="item.title" />
           <p class="carousel-text">{{ item.title }}</p>
-        </div>
+        </router-link>
       </div>
       <button class="arrow right" @click="scrollRight">›</button>
     </div>
