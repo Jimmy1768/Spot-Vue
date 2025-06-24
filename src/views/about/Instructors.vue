@@ -48,7 +48,7 @@ const instructors = [
     specialty: 'Surfing, SUP, Skimboard',
     certifications: 'ISA Level 2, Lifeguard Certified',
     reviews: [
-      'Tony is super patient and clear with instructions.',
+      'Henry is super patient and clear with instructions.',
       'I learned to stand up in one class!',
     ]
   },

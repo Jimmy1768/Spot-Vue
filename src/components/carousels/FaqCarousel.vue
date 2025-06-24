@@ -9,7 +9,7 @@
           :key="index"
           class="carousel-item"
         >
-          <img :src="item.image" :alt="item.title" />
+          <img :src="item.cover_image_url" :alt="item.title" />
           <p class="carousel-text">{{ item.title }}</p>
         </div>
       </div>
