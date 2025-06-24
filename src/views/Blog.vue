@@ -40,6 +40,7 @@ const t = computed(() => translations[currentLang.value])
 onMounted(async () => {
   try {
     const { data } = await axios.get('/blog')
+    console.log('Blog posts fetched:', data)
     if (data.length > 0) {
       posts.value = data
       latest.value = data[0]
