@@ -322,7 +322,9 @@ export const translations = {
         每個人都是現實生活中的浪人, 在人生的波浪中翻滾前進, 走訪一趟 SPOT, 你可以體驗到的不只是衝浪, 而是海洋和這裡的人們帶給你滿滿的能量。<br/><br/>
         希望藉由心靈和海洋經驗的共同成長, 可以讓人們從中尋找到自己心中最完美的浪點。`,
       slogan: 'PURE HONEST SHARE',
-      contactUs: '聯絡我們',
+      supportLine: '一般問題請寄信至 support@spot.com.tw',
+      troubleshootLine: '網站技術問題請聯絡 troubleshoot@spot.com.tw',
+      linePrompt: '加入我們的 LINE：',
       name: '姓名',
       email: '電子信箱',
       subject: '主旨',
@@ -662,7 +664,9 @@ export const translations = {
         Everyone is a wanderer in real life, moving forward through the waves of life. A trip to SPOT brings not just surfing, but energy from the sea and the people here.<br/><br/>
         Through spiritual and marine experiences, we hope people find their own perfect wave.`,
       slogan: 'PURE HONEST SHARE',
-      contactUs: 'Contact Us',
+      supportLine: 'For general inquiries, email us at support@spot.com.tw',
+      troubleshootLine: 'For website issues, contact troubleshoot@spot.com.tw',
+      linePrompt: 'Add us on LINE:',
       name: 'Name',
       email: 'Email',
       subject: 'Subject',
@@ -995,7 +999,9 @@ export const translations = {
         誰もが人生の波を乗り越える現実の旅人。SPOTを訪れることで、ただのサーフィンではなく、海と人々から得られる力強いエネルギーを体験できます。<br/><br/>
         心と海の経験を通じて、自分だけの完璧な波を見つけてほしいと願っています。`,
       slogan: 'PURE HONEST SHARE',
-      contactUs: 'お問い合わせ',
+      supportLine: '一般的なお問い合わせは support@spot.com.tw までご連絡ください',
+      troubleshootLine: 'ウェブサイトの不具合は troubleshoot@spot.com.tw にご連絡ください',
+      linePrompt: 'LINE を追加：',
       name: 'お名前',
       email: 'メールアドレス',
       subject: '件名',

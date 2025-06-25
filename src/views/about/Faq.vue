@@ -41,7 +41,9 @@
       <div class="contact-info half">
         <h3>{{ t.contact }}</h3>
         <p>037-552874</p>
-        <p>tonyfish0711@gmail.com</p>
+        <p>{{ t.supportLine }}</p>
+        <p>{{ t.troubleshootLine }}</p>
+        <p>{{ t.linePrompt }} <a href="https://line.me/R/ti/p/@197hifeq" target="_blank">@197hifeq</a></p>
       </div>
       <div class="contact-info half">
         <h3>{{ t.address }}</h3>

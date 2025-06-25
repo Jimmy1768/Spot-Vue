@@ -25,37 +25,38 @@
         <span class="feature-pill" v-for="(item, i) in t.features" :key="i">{{ item }}</span>
       </div>
 
-      <button class="booking-button" @click="openLineBooking">
-        {{ t.bookOnline }}
-      </button>
+      <div class="booking-buttons">
+        <a href="https://line.me/R/ti/p/@197hifeq" target="_blank" class="booking-btn">
+          <img :src="`${prefix}/assets/line-logo.png`" alt="LINE" class="icon" />
+          <span>LINE</span>
+        </a>
+        <a href="https://www.airbnb.com/rooms/2818980?check_in=2025-06-27&check_out=2025-06-30&guests=1&adults=1&s=67&unique_share_id=6428cfb4-3a07-4957-bdf4-fba50f7142a4"
+           target="_blank" class="booking-btn">
+          <img :src="`${prefix}/assets/airbnb-logo.png`" alt="Airbnb" class="icon" />
+          <span>Airbnb</span>
+        </a>
+      </div>
     </div>
   </div>
 
   <div class="carousel-wrapper">
-  <button class="arrow left" @click="prevSlide">←</button>
+    <button class="arrow left" @click="prevSlide">←</button>
 
-  <div class="carousel-card">
-    <img :src="carouselImages[currentIndex]" class="carousel-image" />
-    <h3 class="carousel-title">{{ currentSlide.title }}</h3>
+    <div class="carousel-card">
+      <img :src="carouselImages[currentIndex]" class="carousel-image" />
+      <h3 class="carousel-title">{{ currentSlide.title }}</h3>
 
-    <!-- If structured sections exist -->
-    <div v-if="currentSlide.sections" class="carousel-text-row">
-      <div class="carousel-text-section" v-for="(section, i) in currentSlide.sections" :key="i">
-        <p v-for="(line, j) in section" :key="j">{{ line }}</p>
+      <div v-if="currentSlide.sections" class="carousel-text-row">
+        <div class="carousel-text-section" v-for="(section, i) in currentSlide.sections" :key="i">
+          <p v-for="(line, j) in section" :key="j">{{ line }}</p>
+        </div>
       </div>
+
+      <p v-else class="carousel-text" v-html="currentSlide.text" />
     </div>
 
-    <!-- Fallback for plain HTML text -->
-    <p v-else class="carousel-text" v-html="currentSlide.text" />
+    <button class="arrow right" @click="nextSlide">→</button>
   </div>
-
-  <button class="arrow right" @click="nextSlide">→</button>
-</div>
-
-
-  <!-- OUTSIDE the layout, so it overlays the whole page -->
-  <!-- <BookingCalendar :visible="showModal" @close="showModal = false" /> -->
-
 </template>
 
 <script setup>
@@ -66,11 +67,6 @@ import BookingCalendar from '@/components/booking/BookingCalendar.vue'
 
 const t = computed(() => translations[currentLang.value].hosteldetails)
 const showModal = ref(false)
-
-// Temporarily redirect to LINE while booking system is being built
-const openLineBooking = () => {
-  window.open('https://line.me/R/ti/p/@197hifeq', '_blank')
-}
 
 const isProd = import.meta.env.MODE === 'production'
 const prefix = isProd ? '/frontend' : ''
@@ -176,18 +172,37 @@ const nextSlide = () => {
   font-size: 0.9rem;
   color: #374151;
 }
-.booking-button {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+
+.booking-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
-.booking-button:hover {
-  background-color: #2563eb;
+
+.booking-btn {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #f2f2f2;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.booking-btn:hover {
+  background: #e0e0e0;
+}
+
+.booking-btn .icon {
+  height: 32px;
+  margin-bottom: 0.3rem;
 }
 
 .carousel-wrapper {
