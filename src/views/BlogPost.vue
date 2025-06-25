@@ -20,7 +20,7 @@ const post = ref(null)
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/blog/${route.params.slug}`)
+    const { data } = await axios.get(`/api/blog/${route.params.slug}`)
     post.value = data
 
     useHead({

@@ -74,7 +74,7 @@ const lessonsQnaPosts = ref([])
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/blog')
+    const { data } = await axios.get('/api/blog')
     console.log('Fetched blog posts for FAQ:', data)
 
     // Debug each post's category
@@ -99,9 +99,16 @@ const form = ref({
   message: ''
 })
 
-const submitForm = () => {
-  console.log('Form submitted:', form.value)
-  // TODO: Add backend logic
+const submitForm = async () => {
+  try {
+    const { data } = await axios.post('/api/contact', form.value)
+    console.log('✅ Message sent:', data)
+    alert('Thank you for your message!')
+    form.value = { name: '', email: '', subject: '', message: '' } // Reset form
+  } catch (error) {
+    console.error('❌ Failed to send message:', error)
+    alert('Failed to send. Please try again later.')
+  }
 }
 </script>
 

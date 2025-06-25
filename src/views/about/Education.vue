@@ -86,7 +86,7 @@ const marineEducationPosts = ref([])
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/blog')
+    const { data } = await axios.get('/api/blog')
     console.log('Fetched blog posts:', data) // 🔍 Log all blog posts
 
     posts.value = data

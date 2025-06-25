@@ -25,7 +25,7 @@ const event = ref(null)
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/events/${route.params.slug}`)
+    const { data } = await axios.get(`/api/events/${route.params.slug}`)
     event.value = data
 
     useHead({

@@ -35,7 +35,7 @@ const events = ref([])
 const currentIndex = ref(0)
 
 const fetchEvents = async () => {
-  const res = await axios.get('/events')
+  const res = await axios.get('/api/events')
   events.value = res.data
 }
 

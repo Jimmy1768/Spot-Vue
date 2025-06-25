@@ -39,7 +39,7 @@ const t = computed(() => translations[currentLang.value])
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/events')
+    const { data } = await axios.get('/api/events')
     if (data.length > 0) {
       events.value = data
       latest.value = data[0]

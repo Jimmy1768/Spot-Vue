@@ -51,7 +51,7 @@ const prevSlide = () => {
 }
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/blog')
+    const { data } = await axios.get('/api/blog')
     posts.value = data.slice(1) // skip the latest blog if already shown above
   } catch (err) {
     console.error('Error loading blog posts:', err)

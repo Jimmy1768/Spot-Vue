@@ -58,7 +58,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted , computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import axios from 'axios'
 import GridItem from '@/components/GridItem.vue'
 import { translations } from '@/i18n/translations.js'
 import { currentLang } from '@/stores/lang'
@@ -97,6 +98,14 @@ function preloadImages(paths) {
 
 onMounted(async () => {
   await preloadImages(imagePaths)
+
+  try {
+    const { data } = await axios.get('/api/events')
+    console.log('✅ Events loaded:', data)
+    eventPosts.value = data
+  } catch (error) {
+    console.error('❌ Failed to fetch events:', error)
+  }
 })
 </script>
 
