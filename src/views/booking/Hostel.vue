@@ -84,10 +84,10 @@ const carouselTexts = computed(() => translations[currentLang.value].hostelcarou
 
 const currentIndex = ref(0)
 const carouselImages = [
-  `${prefix}/assets/about.png`,
-  `${prefix}/assets/rentals.png`,
-  `${prefix}/assets/events.png`,
-  `${prefix}/assets/lessons.png`
+  `${prefix}/assets/hosteldetails1.png`,
+  `${prefix}/assets/hosteldetails2.png`,
+  `${prefix}/assets/hosteldetails3.png`,
+  `${prefix}/assets/hosteldetails4.png`
 ]
 
 const currentSlide = computed(() => carouselTexts.value[currentIndex.value])

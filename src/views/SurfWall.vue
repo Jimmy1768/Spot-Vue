@@ -51,12 +51,12 @@
 
 <script setup>
 const galleryEntries = [
-  { name: 'Jessie', date: 'May 2025', image: '/assets/faq2.png' },
-  { name: 'Kai', date: 'May 2025', image: '/assets/faq3.png' },
-  { name: 'Mei', date: 'May 2025', image: '/assets/faq4.png' },
-  { name: 'Liam', date: 'April 2025', image: '/assets/faq5.png' },
-  { name: 'Sara', date: 'March 2025', image: '/assets/faq6.png' },
-  { name: 'Alex', date: 'March 2025', image: '/assets/faq2.png' },
+  { name: 'Jessie', date: 'May 2025', image: '/assets/surfwall2.png' },
+  { name: 'Kai', date: 'May 2025', image: '/assets/surfwall3.png' },
+  { name: 'Mei', date: 'May 2025', image: '/assets/surfwall4.png' },
+  { name: 'Liam', date: 'April 2025', image: '/assets/surfwall5.png' },
+  { name: 'Sara', date: 'March 2025', image: '/assets/surfwall6.png' },
+  { name: 'Alex', date: 'March 2025', image: '/assets/surfwall1.png' },
 ]
 </script>
 
