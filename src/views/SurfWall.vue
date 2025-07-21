@@ -50,13 +50,16 @@
 </template>
 
 <script setup>
+const isProd = import.meta.env.MODE === 'production'
+const prefix = isProd ? '/frontend' : ''
+
 const galleryEntries = [
-  { name: 'Jessie', date: 'May 2025', image: '/assets/surfwall2.png' },
-  { name: 'Kai', date: 'May 2025', image: '/assets/surfwall3.png' },
-  { name: 'Mei', date: 'May 2025', image: '/assets/surfwall4.png' },
-  { name: 'Liam', date: 'April 2025', image: '/assets/surfwall5.png' },
-  { name: 'Sara', date: 'March 2025', image: '/assets/surfwall6.png' },
-  { name: 'Alex', date: 'March 2025', image: '/assets/surfwall1.png' },
+  { name: 'Jessie', date: 'May 2025', image: `${prefix}/assets/surfwall2.png` },
+  { name: 'Kai', date: 'May 2025', image: `${prefix}/assets/surfwall3.png` },
+  { name: 'Mei', date: 'May 2025', image: `${prefix}/assets/surfwall4.png` },
+  { name: 'Liam', date: 'April 2025', image: `${prefix}/assets/surfwall5.png` },
+  { name: 'Sara', date: 'March 2025', image: `${prefix}/assets/surfwall6.png` },
+  { name: 'Alex', date: 'March 2025', image: `${prefix}/assets/surfwall1.png` },
 ]
 </script>
 

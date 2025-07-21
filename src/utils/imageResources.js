@@ -34,7 +34,7 @@ export const imagePaths = [
   new URL('../assets/skimboarddetails.png', import.meta.url).href,
   new URL('../assets/sup.png', import.meta.url).href,
   new URL('../assets/supdetails.png', import.meta.url).href,
-  new URL('../assets/subskate.png', import.meta.url).href,
+  new URL('../assets/supskate.png', import.meta.url).href,
   new URL('../assets/supskatedetails.png', import.meta.url).href,
   new URL('../assets/surfing.png', import.meta.url).href,
   new URL('../assets/surfingdetails.png', import.meta.url).href,
