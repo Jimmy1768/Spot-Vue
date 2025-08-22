@@ -112,14 +112,14 @@ export const translations = {
     },
 
     skimboardLesson: {
-      title: "Skimboard 滑板課程",
+      title: "Skimboard 沙板課程",
       intro: [
         "Skimboard 是一種在沙灘上進行的極限運動，結合平衡、速度與技巧。",
         "適合各年齡層，也是一項親子共學的有趣課程。"
       ],
       contentTitle: "課程內容",
       indoor: "室內課程",
-      indoorContent: "滑板概念、裝備介紹、安全防護、基本玩法介紹。",
+      indoorContent: "沙板概念、裝備介紹、安全防護、基本玩法介紹。",
       outdoor: "室外課程",
       outdoorContent: "實地操作與技巧練習，適應沙面滑行。",
       detailsTitle: "課程細節",
