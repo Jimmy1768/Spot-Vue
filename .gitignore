@@ -29,3 +29,6 @@ coverage
 
 *.tsbuildinfo
 vite.config.js
+
+# Local docs folder (not for repo)
+docs/
