@@ -43,7 +43,7 @@ export const translations = {
         ]
       },
       skimboard: {
-        label: '滑板',
+        label: '沙板',
         description: '沙板概念 / 裝備介紹 / 安全防護 / 基本玩法',
         duration: '2.5 小時',
         pricing: [
