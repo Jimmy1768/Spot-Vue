@@ -33,7 +33,7 @@ export const translations = {
         ]
       },
       sup: {
-        label: '立槳衝浪',
+        label: '立槳',
         description: '立式划槳概念 / 操作原理 / 實際體驗',
         duration: '2.5 小時',
         pricing: [
@@ -53,7 +53,7 @@ export const translations = {
         ]
       },
       supskate: {
-        label: '陸地立槳板',
+        label: '陸地槳板',
         description: 'SUPSKATE 概念 / 操作技巧 / 實際體驗',
         duration: '1 小時',
         pricing: [
