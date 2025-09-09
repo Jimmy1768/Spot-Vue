@@ -43,7 +43,7 @@
         <p>037-552874</p>
         <p>{{ t.supportLine }}</p>
         <p>{{ t.troubleshootLine }}</p>
-        <p>{{ t.linePrompt }} <a href="https://line.me/R/ti/p/@197hifeq" target="_blank">@197hifeq</a></p>
+        <p>{{ t.linePrompt }} <a href="https://line.me/R/ti/p/@spot8888" target="_blank">@spot8888</a></p>
       </div>
       <div class="contact-info half">
         <h3>{{ t.address }}</h3>
