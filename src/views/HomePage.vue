@@ -1,16 +1,13 @@
 <template>
+  <div class="contact-container">
+    <div class="contact-message">
+      {{ t.contactMessage }}
+    </div>
+  </div>
   <!-- Main section with centered grid and logo -->
   <div class="main">
     <div class="grid-with-logo">
-      <img src="/assets/logo.png" alt="SPOT Logo" class="logo" />
-
-      <!-- Center: Surfwall -->
-      <div class="surfwall-message">
-        <span class="surfwall-bubble">
-          {{ t.surfwallMessage }}
-          <router-link to="/surfwall">{{ t.joinChallenge }}</router-link>
-        </span>
-      </div>
+      <img src="/assets/logo.png" alt="SPOT Logo" class="logo" />     
       
       <div class="grid">
         <GridItem
@@ -55,6 +52,14 @@
 
   <!-- Events Carousel -->
   <EventsCarousel :posts="eventPosts" />
+
+  <!-- Center: Surfwall -->
+      <div class="surfwall-message">
+        <span class="surfwall-bubble">
+          {{ t.surfwallMessage }}
+          <router-link to="/surfwall">{{ t.joinChallenge }}</router-link>
+        </span>
+      </div>
 </template>
 
 <script setup>
@@ -108,8 +113,18 @@ onMounted(async () => {
   }
 })
 </script>
-
 <style scoped>
+.contact-container {
+  text-align: center;
+}
+.contact-message {
+  background-color: #222;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 1px 0;
+  display: inline-block;
+}
 .main {
   padding: 0 16px;
   display: flex;

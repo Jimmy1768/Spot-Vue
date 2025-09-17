@@ -1,6 +1,8 @@
 // src/i18n/translations.js
 export const translations = {
   zh: {
+    contactMessage: 'SPOT 任何服務歡迎私訊官方Line詢問',
+
     lessons: '課程',
     surfing: '衝浪',
     sup: '立槳',
@@ -343,6 +345,7 @@ export const translations = {
   },
 
   en: {
+    contactMessage: 'For any SPOT service, feel free to contact us on LINE.',
     lessons: 'Lessons',
     surfing: 'Surfing',
     sup: 'SUP',
@@ -680,6 +683,7 @@ export const translations = {
   },
   
   ja: {
+    contactMessage: 'SPOTのサービスについては、LINEでお気軽にお問い合わせください。',
     lessons: 'レッスン',
     surfing: 'サーフィン',
     sup: 'SUP',

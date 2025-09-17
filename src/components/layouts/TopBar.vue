@@ -7,6 +7,7 @@
           <a href="https://www.facebook.com/spottaiwan/"><i class="fab fa-facebook-square"></i></a>
           <a href="https://www.instagram.com/spot_tw/?hl=zh-tw"><i class="fab fa-instagram-square"></i></a>
           <a href="https://www.youtube.com/channel/UCQc9oPHnr9ZxdiH1aZKU17g"><i class="fab fa-youtube-square"></i></a>
+          <a href="https://lin.ee/SU4z0Fa" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
         </div>
         <router-link to="/" class="top-button">Home</router-link>
       </div>      

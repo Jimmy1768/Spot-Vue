@@ -76,7 +76,8 @@ const images = [
   `${prefix}/assets/hostel2.png`,
   `${prefix}/assets/hostel3.png`,
   `${prefix}/assets/hostel4.png`,
-  `${prefix}/assets/hostel5.png`
+  `${prefix}/assets/hostel5.png`,
+  `${prefix}/assets/hostel6.png`,
 ]
 const currentImage = ref(images[0])
 
