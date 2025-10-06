@@ -11,6 +11,7 @@ const proxyRoutes = [
 ]
 
 const proxy = proxyRoutes.reduce((acc, route) => {
+  // @ts-ignore: cleanUrls not in types but valid
   acc[route] = backendHost
   return acc
 }, {})
